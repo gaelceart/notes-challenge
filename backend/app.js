@@ -24,5 +24,5 @@ export default function createApp () {
     res.send('<h1>Working!</h1><h2>404 page not found</h2>')
   })
 
-  app.listen(PORT, () => console.log(`APP listening on port ${PORT}`))
+  app.listen(PORT, '0.0.0.0', () => console.log(`APP listening on port ${PORT}`))
 }
