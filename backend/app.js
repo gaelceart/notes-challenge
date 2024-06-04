@@ -1,7 +1,7 @@
 import express from 'express'
 import createNotesRouter from './routes/notes.js'
 import createTagsRouter from './routes/tags.js'
-const PORT = 3003
+const PORT = process.env.PORT ?? 3003
 
 export default function createApp () {
   const app = express()
