@@ -1,0 +1,29 @@
+@startuml
+header note-app
+title Creating notes\n(POST)
+footer gaelceart
+skinparam sequenceMessageAlign center
+skinparam responseMessageBelowArrow true
+skinparam monochrome true
+skinparam shadowing false
+actor Client
+participant "Route" as r
+participant "Controller" as c
+participant "Model" as m
+entity "Notes\n(ORM)" as n
+database SQL
+
+autonumber 1.1
+Client->r+:/notes\n?fields:text (optional)
+r->c+:createNote(fields:object)
+c->m+:createNote(fields:object)
+m->m+:createNote(fields:object)
+m->n+:create(fields:object)
+n->SQL+: INSERT
+return response
+return response
+return response
+return response
+return response
+return response
+@enduml

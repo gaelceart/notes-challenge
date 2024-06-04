@@ -1,0 +1,23 @@
+{
+  "name": "notes-backend",
+  "version": "1.0.0",
+  "description": "Backend for the note app",
+  "main": "app.js",
+  "type": "module",
+  "scripts": {
+    "dev": "node --watch app.js"
+  },
+  "author": "Gastón Villalba",
+  "license": "ISC",
+  "dependencies": {
+    "express": "4.19.2",
+    "sequelize": "6.37.1",
+    "sqlite3": "5.1.7"
+  },
+  "devDependencies": {
+    "standard": "^17.1.0"
+  },
+  "eslintConfig": {
+    "extends": "./node_modules/standard/eslintrc.json"
+  }
+}

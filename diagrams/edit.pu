@@ -1,0 +1,29 @@
+@startuml
+header note-app
+title Editing notes\n(PATCH)
+footer gaelceart
+skinparam sequenceMessageAlign center
+skinparam responseMessageBelowArrow true
+skinparam monochrome true
+skinparam shadowing false
+actor Client
+participant "Route" as r
+participant "Controller" as c
+participant "Model" as m
+entity "Notes\n(ORM)" as n
+database SQL
+
+autonumber 1.1
+Client->r+:/notes\n?type=edit\n&id=int&body=text
+r->c+:updateNote(id:int, text:string)
+c->m+:updateNote(id:int, text:string)
+m->m+:updateNote(id:int, text:string)
+m->n+:update(body:object)
+n->SQL+: UPDATE
+return response
+return response
+return response
+return response
+return response
+return response
+@enduml

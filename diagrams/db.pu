@@ -1,0 +1,35 @@
+@startuml
+header note-app 
+title Entity Relation Diagram
+footer gaelceart
+skinparam linetype ortho
+skinparam monochrome true
+skinparam shadowing false
+hide circle
+hide methods
+enum "<<Note Status>>" as ns {
+   ACTIVE
+   ARCHIVED
+}
+
+entity "Note" as n {
+  * id : INT PRIMARY KEY
+  --
+  * body : TEXT NULL
+  * title: TEXT NULL 
+  * status : NOTE_STATUS default ACTIVE NOT NULL
+  * created : TIMESTAMP default CURRENT_TIMESTAMP NOT NULL
+  * last_edited : TIMESTAMP default CURRENT_TIMESTAMP NOT NULL
+}
+
+entity "Tagged" as t {
+  * (note_id, tag) PRIMARY KEY
+  --
+  * note_id : INT FOREIGN KEY
+  * tag : TEXT NOT NULL
+}
+
+n }|--|| ns
+n }o--o{ t
+
+@enduml

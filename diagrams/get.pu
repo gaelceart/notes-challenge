@@ -1,0 +1,24 @@
+@startuml
+header note-app
+title GET request template
+footer gaelceart
+skinparam sequenceMessageAlign center
+skinparam responseMessageBelowArrow true
+skinparam monochrome true
+skinparam shadowing false
+actor Client
+participant "Route" as r
+participant "Controller" as c
+participant "Model" as m
+
+Client->r+:GET
+r->c+:GET
+c->m+:GET
+m->m+:do
+m->+:utils
+return data
+return data
+return response
+return response
+return response
+@enduml

@@ -1,0 +1,33 @@
+@startuml
+header note-app
+title Fetching tags\n(GET)
+footer gaelceart
+skinparam sequenceMessageAlign center
+skinparam responseMessageBelowArrow true
+skinparam monochrome true
+skinparam shadowing false
+actor Client
+participant "Route" as r
+participant "Controller" as c
+participant "Model" as m
+entity "Tagged\n(ORM)" as t
+database SQL
+
+autonumber 1.1
+Client->r+:/tags
+r->c+:getTags()
+c->m+:getTags()
+m->m+:getTags()
+m->t+:findAll(where:object)
+t->SQL+:SELECT
+return rows
+return data
+return data
+return response
+note bottom 
+  remove
+  duplicates
+end note
+return response
+return response
+@enduml

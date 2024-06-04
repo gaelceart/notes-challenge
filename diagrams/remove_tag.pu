@@ -1,0 +1,29 @@
+@startuml
+header note-app
+title Removing tags from notes\n(DELETE)
+footer gaelceart
+skinparam sequenceMessageAlign center
+skinparam responseMessageBelowArrow true
+skinparam monochrome true
+skinparam shadowing false
+actor Client
+participant "Route" as r
+participant "Controller" as c
+participant "Model" as m
+entity "Tagged\n(ORM)" as t
+database SQL
+
+autonumber 1.1
+Client->r+:/tags\n?id=int&tag=text
+r->c+:removeTag\n(id:int, text:string)
+c->m+:removeTag\n(id:int, text:string)
+m->m+:removeTag\n(id:int, text:string)
+m->t+:destroy(where:object)
+t->SQL+:DELETE
+return response
+return response
+return response
+return response
+return response
+return response
+@enduml

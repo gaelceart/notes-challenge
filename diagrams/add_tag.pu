@@ -1,0 +1,29 @@
+@startuml
+header note-app
+title Adding tags to notes\n(POST)
+footer gaelceart
+skinparam sequenceMessageAlign center
+skinparam responseMessageBelowArrow true
+skinparam monochrome true
+skinparam shadowing false
+actor Client
+participant "Route" as r
+participant "Controller" as c
+participant "Model" as m
+entity "Tagged\n(ORM)" as t
+database SQL
+
+autonumber 1.1
+Client->r+:/tags\n?&id=int&tag=text
+r->c+:addTag(id:int, text:string)
+c->m+:addTag(id:int, text:string)
+m->m+:addTag(id:int, text:string)
+m->t+:create(id:int, tag:string)
+t->SQL+:INSERT
+return response
+return response
+return response
+return response
+return response
+return response
+@enduml

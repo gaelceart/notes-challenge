@@ -1,0 +1,39 @@
+@startuml
+header note-app
+title Filtering notes by tag\n(GET)
+footer gaelceart
+skinparam sequenceMessageAlign center
+skinparam responseMessageBelowArrow true
+skinparam monochrome true
+skinparam shadowing false
+actor Client
+participant "Route" as r
+participant "Controller" as c
+participant "Model" as m
+entity "Tagged\n(ORM)" as t
+participant "Notes\nController" as nc
+participant "Notes\nModel" as nm
+entity "Notes\n(ORM)" as n
+database SQL
+autonumber 1.1
+Client->r++:'tags&tag=text'
+r->c++:getTags(tag:string)
+c->m++:getTags(tag:string)
+m->m++:getTags(tag:string)
+m->t++:findAll(where:object)
+t->SQL++:SELECT
+return rows
+return notesID
+return notesID
+return notesID
+c->nc++:getNotes(condition:object)
+nc->nm++:getNotes(condition:object)
+nm->n++:findAll(where: object)
+n->SQL++:SELECT
+return rows
+return data
+return data
+return response
+return response
+return response
+@enduml
