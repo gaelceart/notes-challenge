@@ -1,1 +1,1 @@
-export const SERVER_ADDRESS = 'http://localhost:3003'
+export const SERVER_ADDRESS = `http://${process.env.HOSTNAME}:3003`
