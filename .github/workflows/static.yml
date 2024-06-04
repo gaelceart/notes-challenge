@@ -35,8 +35,8 @@ jobs:
         with:
           node-version: 20
           cache: 'npm'
-      - name: Run server script
-        run: ./server.zsh
+      - name: Build front
+        run: cd frontend && npm run build
       - name: Setup Pages
         uses: actions/configure-pages@v4
       - name: Upload artifact
